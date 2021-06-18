@@ -66,6 +66,7 @@ class Artist:
 # get data and make list of Playlists
 
 
+# ==================Helping Functions (Getters)=====================
 """acousticness — how acoustic
 danceability — self-explanatory
 energy — how 'fast, loud an noisy'
@@ -116,6 +117,8 @@ def getEnergy(uri):
 def getSpeechiness(uri):
     features = sp.audio_features(uri)
     return features[0]['speechiness']
+
+# ==================Main Functions=====================
 
 
 def searchforPl(arr, low, high, x):
@@ -344,14 +347,6 @@ def getSongGenres(uri):
     return genres
 
 
-""" 
-   for singer in artists_on_track:
-         print(singer)
-        artist_info = singer['uri']
-        artist = sp.artist(artist_info)
-        for genre in artist['genres']:"""
-
-
 def analyzeSong(uri):
 
     danceability = getDanceability(uri)
@@ -383,20 +378,7 @@ def getMostPlayedGenre():
             mostPlayed = list(key)"""
 
 
-def hello():
-    print("hello monster")
-# def getPlaylistGenres():
-
-# print(artists_on_track, "\n")
-# track_info = sp.track('5FkoSXiJPKTNyYgALRJFhD')  # will give us names and such
-# track_features = sp.audio_features('5FkoSXiJPKTNyYgALRJFhD')  # will give danceabilty
-
-# name = track_info['name']
-# danceability = track_features[0]['danceability']
-
-
-# getDanceability()
-# print(name , " has a score of " , danceability)
+# Tkinter sample code for future GUI
 """window = Tk()
 # giving title to the main window
 window.title("First_Program")
@@ -410,22 +392,21 @@ btn = Button(window, text="print", command=hello).pack(side='top')
 # when your application is ready to run
 # and it tells the code to keep displaying
 window.mainloop()"""
-input_me = -1
-while(input_me != 5):
+# ================== MENU =====================
+opt = -1
+while(opt != 5):
     print("Welcome to your playlist analyzer")
     print(" 1. extractData \n 2. analyzePl \n 3. analyzeSong \n 4. showSongGenres \n 5. Quit")
-    input_me = int(input("> "))
-    if input_me == 1:
+    opt = int(input("> "))
+    if opt == 1:
         extractData()
         clearConsole()
-    elif input_me == 2:
+    elif opt == 2:
         plName = input("Enter playlist name:")
         analyzePl(plName)
-    elif input_me == 3:
+    elif opt == 3:
         uri = input("Enter Uri:")
         analyzeSong(uri)
-    elif input_me == 4:
+    elif opt == 4:
         uri = input("Enter Uri:")
         print(getSongGenres(uri))
-# print("% in this playlist")
-# getMostPlayedGenre()
